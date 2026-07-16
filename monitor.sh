@@ -5,18 +5,13 @@ set -euo pipefail
 python figlet.py
 
 # Check if directories exist and create them if they don't.
-if [ ! -d database ] || [ ! -d reports ] || [ ! -d monitored ]; then
-  mkdir -p database reports monitored
-  echo "Missing directories created"
-else
-  echo 'All directories already exist'
-fi
+mkdir -p database reports monitored
 
 # Create new file 'current.txt'
 : > database/current.txt
 
-for file in monitored/*; do
-    sha256sum "$file" >> reports/report.txt
+find ./monitored -type f | while read file; do
+  sha256sum "$file" >> database/current.txt
 done
 
 python compare.py
