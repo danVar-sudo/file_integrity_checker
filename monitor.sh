@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+python figlet.py
+
 # Check if directories exist and create them if they don't.
 if [ ! -d database ] || [ ! -d reports ] || [ ! -d monitored ]; then
   mkdir -p database reports monitored
@@ -13,10 +15,8 @@ fi
 # Create new file 'current.txt'
 : > database/current.txt
 
-# if
 for file in monitored/*; do
     sha256sum "$file" >> reports/report.txt
 done
-# fi
 
 python compare.py
