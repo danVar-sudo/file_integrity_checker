@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-python figlet.py
+python3 figlet.py
 
 # Check if directories exist and create them if they don't.
 mkdir -p database reports monitored
@@ -14,4 +14,4 @@ find ./monitored -type f | while read file; do
   sha256sum "$file" >> database/current.txt
 done
 
-python compare.py
+python3 compare.py
