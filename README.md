@@ -28,3 +28,6 @@ The File Integrity Checker is a script that monitors and compares file changes i
 - `pyfiglet`: Used to display the welcome message.
 - `filecmp`: Used to compare hash files.
 - `sha256sum`: Used to generate SHA-256 hashes.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
